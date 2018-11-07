@@ -1,0 +1,179 @@
+        NOTES FOR QB PLUS QUICKBASIC PROGRAMMER'S DESK ACCESSORIES
+
+
+   This file contains additional information that was not available at the
+time the QB Plus manual was printed.
+
+
+OPERATION WITH WINDOWS 3.0
+==========================
+
+While not specifically designed to run under Windows, QB Plus will operate
+satisfactorily when run from the DOS Prompt or as a non-windows
+application, subject to the following limitations and considerations:
+
+
+1.   All QB Plus features are available in both Windows Real and Standard
+     modes.
+
+2.   Profiling is not recommended in Windows 386 Enhanced mode, as multi-
+     tasking and paging functions undertaken by Windows can distort the 
+     timings made by QB Plus.  Selecting the "Exclusive" option in the 
+     .PIF file used to run QB Plus can reduce this effect.  In any event, 
+     the higher sampling rates otherwise available via the periodic 
+     interrupt feature of an AT-compatible real-time clock are not 
+     supported in Windows 386 Enhanced mode.
+
+3.   Viewing of Extended memory is not supported under Windows 386
+     Enhanced mode.  Attempts by an application to access extended memory
+     directly are intercepted and treated as a "System Integrity Violation"
+     by Windows and the offending application is terminated.  Therefore,
+     the QB Plus option of "Direct View of Extended memory" must always be
+     disabled to ensure QB Plus, along with QuickBASIC and any loaded
+     QuickBASIC program, is not abruptly halted when the QB Plus memory 
+     viewer is invoked.  QB Plus automatically disables Direct Extended
+     memory viewing at startup when run under Windows 386.  You can also
+     disable direct viewing with the "/NX" command line argument, or the
+     toggle switch in QB Plus' "Change Settings - Other" menu.
+
+4.   Similarly, accessing data in XMS handles "owned" by Windows or another
+     application is likewise treated as a "System Integrity Violation" by
+     Windows 386 Enhanced.  Therefore, use caution when viewing XMS memory,
+     or obtaining a handle list with QB Plus under Windows 386 Enhanced.
+     QB Plus will give you a warning which you may override, or disable, 
+     when attempting to enter XMS viewing mode.  Proceed at your own risk.
+     It is advisable that you first save any loaded QuickBASIC program
+     beforehand.
+
+     Note: Windows may not immediately terminate QB Plus when the
+     "Violation" (accessing other's XMS data) first occurs.  Rather, the
+     termination may happen later when a handle list is requested.  Thus,
+     successful viewing of an XMS handle may not necessarily indicate that
+     you are secure from a subsequent sudden shutdown.
+
+5.   The file QBPLUS.ICO contains a custom Windows icon for QB Plus.
+
+
+
+OPERATION UNDER DESQVIEW
+========================
+
+The following is applicable to operation of QB Plus under Desqview:
+
+
+1.   We suggest that you specify a minimum memory requirement of 348K
+     bytes and a keyboard conflict setting of 4 in the .DVP file used
+     to start QB Plus.
+
+2.   Profiling is not recommended in DESQview 386, because multi-tasking
+     functions undertaken by Desqview can distort the timings made
+     by QB Plus.  In any event, the higher sampling rates otherwise
+     available via the periodic interrupt feature of an AT-compatible
+     real-time clock are not supported in Desqview.
+
+
+
+DISABLING OF MOUSE AFTER SWITCHING PROGRAMS
+===========================================
+
+After switching to another application program from within QB Plus, the
+mouse may become disabled -- that is, the cursor may not respond to mouse
+movements, or QuickBASIC does not respond to mouse button clicks.  This
+can occur where the application program to which you switched disabled the
+mouse on exit.  You can usually restore the mouse function and settings
+used by QuickBASIC by shelling to DOS from QuickBASIC, and then returning
+to QuickBASIC by typing EXIT at the DOS command line.
+
+
+
+CHANGING QB PLUS DISPLAY COLORS
+===============================
+
+As of QB Plus Version 1.1 you may change the colors used by QB Plus, and
+save the selection in the QB Plus configuration file.
+
+From the QB Plus main menu, choose the "<C>hange settings" option, then
+the "<C>olor settings" option from the menu that follows.  The QB Plus
+color selection screen permits both foreground and background color to be
+chosen from one of the standard 16 text colors.  Most displays, however,
+will recognize only the first 8 of the background colors.
+
+Use the Up and Down cursor keys to vertically reposition the arrowhead on
+screen to the corresponding choice in the Foregound color list.  Use the
+right and left cursor keys to move between the Foregound list and the
+adjacent Backgound list.  As you change lists the arrowhead indicator moves
+to the new list leaving a checkmark in its place within the previous list.
+
+"Sample Text" on screen previews your color changes as the arrowhead moves
+from one color to another.
+
+Press the Enter key to place your color selections into effect.  Otherwise
+press Escape to leave the existing colors unchanged.
+
+Selecting the "<S>ave settings" option will store your color selection in
+the QB Plus configuration file to be used each time QB Plus is started.
+
+
+
+KEYBOARD DELAY AND REPEAT RATES
+===============================
+
+QB Plus provides an option for use with AT-compatible systems to change
+the keyboard's delay and repeat rate.  The new rate may be set automatically
+when QB Plus is started.
+
+From the QB Plus main menu, choose "<C>hange settings", then "<K>eyboard
+settings" from the menu that follows.  Repeat rates range from 2 to 30
+characters per second; delay rates from 250 to 1000 milliseconds at 250
+millisecond intervals.
+
+The up and down cursor keys toggle between the repeat and delay scales,
+with a vertical arrowhead denoting the active scale.  Use the right and
+left cursor keys to position the arrowhead at the desired value.
+
+The "A" key toggles the Automatic Startup setting.  When enabled, QB Plus
+automatically sets the keyboard to your desired rates at startup.  Then
+when QB Plus ends, it automatically resets the rates to the defaults for
+AT-class computers: 500 milliseconds delay and 10 characters per second
+repeat rate.  You must use the "<S>ave settings" command which modifies the
+QB Plus configuration file, for the Automatic Startup option to take effect.
+
+If you do not enable and save the Automatic Startup setting, you will need
+to set new rates manually in the Keyboard menu after QB plus is started.
+However, with Automatic Startup disabled any new keyboard rate settings will
+remain in effect after QB Plus ends, for use in other programs or later QB
+Plus sessions.
+
+
+
+AT-COMPATIBLE 8086/8088 BIOS
+============================
+
+QB Plus uses the Int 15h Get Extended Memory Size and also examines the CMOS
+memory area to identify extended memory.  BIOS's which support this call
+cause QB Plus to use the Int 15h Move function for memory viewing, which
+will produce blanks on an 8088/8086 machine.  Setting the /NX switch (or
+disabling Direct View in the configuration menu) overrides this behavior
+and permits memory viewing.
+
+
+
+QB PLUS REVISION HISTORY
+========================
+
+Version       Description
+
+1.01        Support for German version of QB 4.5 incorporated.  Mouse data
+09/11/91    saved and restored during Switch program, with mouse reset and
+            user interrupt into QB disconnected prior to swapping QB out of
+            memory.  Cursor enabled for Switched program.
+
+1.01        Support in Build .EXE for non-.BAS source files. Console (color
+10/10/91    display and keyboard speed-up) configuration added, with
+            complementary configuration file format changes, downwardly
+            compatible.  Fixes to Configuration menu <R> and <X> toggles.
+            Changes to Cursor-On/Off routines and Switch Program screen
+            clearing to accommodate original IBM AT Bios with CGA.
+
+1.02        Fixed a bug that didn't allow BC or LINK commands to be
+10/31/91    remarked out with an apostrophe (').
