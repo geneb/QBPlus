@@ -1,6 +1,7 @@
 '---- QuickBasic Memory Viewer
 '---- Copyright 1991 John Eckert
-
+' Released to the Public Domain on 10/26/18.
+'
 ' This is a demo program provided with the QuickBasic Plus Programmer's Desk
 ' Accessories to illustrate Execution Profiling in combination with
 ' Macro keystroke recording and playback.  It is packed with optimization
@@ -519,7 +520,7 @@ SUB DisplayHeaderLine
 IF (Mode = MCmos) OR (Mode = MPort) THEN  'Skip addrs headings on these modes
 ELSE
     IF AddrMode = Expanded THEN           '{ Do other Address Headings }
-       writes "Hndl³Page:Ofstº EMS "
+       writes "HndlÂ³Page:OfstÂº EMS "
        Regx.AX = &H5300
        Regx.DX = BBank
        Regx.ES = VARSEG(HandleName)            '{ incl EMS handle name      }
@@ -536,10 +537,10 @@ ELSE
        END IF
     ELSE
         IF ShowLinear AND (AddrMode = Linear) THEN
-           writes "Linearº "
-        ELSEIF AddrMode = XMSDrv THEN writes "Hndl³ Offset º XMS"
+           writes "LinearÂº "
+        ELSEIF AddrMode = XMSDrv THEN writes "HndlÂ³ Offset Âº XMS"
         ELSE
-            writes "Huge³Sgmt:Ofstº "
+            writes "HugeÂ³Sgmt:OfstÂº "
         END IF
     END IF
   
@@ -561,16 +562,16 @@ SELECT CASE Mode
    CASE MPort, MCmos
       writes " "
       WriteHexWord LMemOff
-      writes " ³ "
+      writes " Â³ "
    CASE MByte TO MInteger
       WriteHexWord LBank
-      writes "³"
+      writes "Â³"
       WriteHexWord LMemSeg
       writes ":"
       WriteHexWord LMemOff
 END SELECT
 
-writes "º "
+writes "Âº "
 
 
 
